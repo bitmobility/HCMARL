@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="LLM-guided hierarchical constrained multi-agent reinforcement learning for autonomous cooperative load transportation. Framework, experiments, and driving demonstrations.">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:title" content="Hierarchical Constrained MARL for Cooperative Load Transportation">
+  <meta property="og:description" content="From LLM driving decisions to geometry-consistent trajectory priors and coordinated multi-vehicle control.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="preload" as="image" href="assets/images/transport-hero.jpg">
+  <link rel="stylesheet" href="assets/css/style.css?v=merged-sections-4">
+  <script defer src="assets/js/config.js?v=videos-1"></script>
+  <script defer src="assets/js/main.js?v=heading-layout-3"></script>
+</head>
+<body>
+
+
+  <main id="main">
+    <header class="hero hero-photo" id="top">
+      <div class="container hero-content">
+      <h1>Hierarchical Constrained Multi-Agent Reinforcement Learning with <span>LLM-Guided Trajectory Priors</span> for Autonomous Cooperative Load Transportation Systems</h1>
+      <p class="authors">Hao Pang<sup>1</sup><span class="author-separator">,</span> Guoqiang Li<sup>1,✉</sup><span class="author-separator">,</span> Yu Yue<sup>1</sup></p>
+      <p class="affiliation"><sup>1</sup> School of Mechanical Engineering, Beijing Institute of Technology</p>
+      <p class="corresponding">✉ Corresponding author: <a href="mailto:guoqiangli@bit.edu.cn">Guoqiang Li</a></p>
+      </div>
+    </header>
+
+    <section class="section section-tint" id="overview" aria-labelledby="abstract-heading">
+      <div class="container">
+        <div class="abstract prose">
+          <h2 id="abstract-heading" class="section-title">Abstract</h2>
+          <p>Coordinated multi-vehicle motion in autonomous cooperative load transportation systems (ACLTSs) remains challenging owing to rigid-payload coupling and dynamic interactions with surrounding traffic. In this paper, we propose a large language model (LLM)-guided hierarchical constrained multi-agent reinforcement learning (MARL) framework for the collaborative control of the ACLTS. The framework integrates LLM-based driving guidance with constrained multi-agent policy learning to achieve safe and coordinated transportation. Specifically, we propose an innovative trajectory prior guidance method to translate the high-level driving decisions from the LLM into dense, geometry-consistent guidance, which improves the safety and learning efficiency of the collaborative control policies. To maintain coordinated motion among the carrier vehicles, we develop a motion-constrained MARL algorithm that jointly incorporates distance and velocity motion constraints into the MARL policy optimization process and resolves the constrained optimization problem through Lagrangian duality. Extensive experiments demonstrate that the proposed framework achieves superior performance in transportation safety and motion coordination. The learned policy achieves a 90.4% task success rate in transportation tasks. It also reduces the distance and velocity constraint violations by 91.0% and 77.6%, respectively, satisfying both motion constraints simultaneously at 97.7% of the evaluated time steps. Further experiments in highway, roundabout, and intersection scenarios demonstrate the framework’s applicability to different road geometries and traffic conditions.</p>
+        </div>
+        <div class="metrics" aria-label="Key testing results">
+          <div><strong>90.4<span>%</span></strong><p>Task success rate</p></div>
+          <div><strong>97.7<span>%</span></strong><p>Concurrent constraint satisfaction</p></div>
+          <div><strong>91.0<span>%</span><small>↓</small></strong><p>Distance constraint violation</p></div>
+          <div><strong>77.6<span>%</span><small>↓</small></strong><p>Velocity constraint violation</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="framework" aria-labelledby="framework-heading">
+      <div class="container">
+        <h2 id="framework-heading" class="section-title">Method</h2>
+        <figure class="paper-figure">
+          <a href="assets/images/framework.webp" target="_blank" rel="noopener" aria-label="Open the full framework figure"><img src="assets/images/framework.webp" width="2200" height="1431" loading="lazy" alt="Framework with an LLM decision-maker, reference trajectory prior guidance, and Lagrangian motion-constrained multi-agent reinforcement learning connected to the coupled ACLTS environment."></a>
+          <figcaption> LLM-guided hierarchical constrained MARL for autonomous cooperative load transportation.</figcaption>
+        </figure>
+        <div class="method-steps">
+          <article><span class="step-number">01</span><h3>Reason about traffic</h3><p>An LLM decision-maker interprets the driving scene and generates high-level decisions for the transportation system.</p></article>
+          <article><span class="step-number">02</span><h3>Construct trajectory priors</h3><p>Load–vehicle geometry converts driving decisions into consistent reference trajectories and dense shaping rewards.</p></article>
+          <article><span class="step-number">03</span><h3>Learn coordinated control</h3><p>Constraint costs and adaptive Lagrange multipliers regulate vehicle spacing and velocity consistency along the payload.</p></article>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section section-tint" id="highway-videos" aria-labelledby="highway-heading">
+      <div class="container">
+        <div class="video-section-heading"><h2 id="highway-heading" class="section-title">Video demonstrations</h2><span class="status-pill">Videos coming soon</span></div>
+        <p class="section-lead">Cooperative load transportation on the highway: our method and four baseline algorithms.</p>
+        <div class="video-grid highway-grid">
+          <article class="video-card featured" data-video="highway-proposed">
+            <div class="video-header"><h3>Our method</h3><span class="method-tag">Proposed</span></div>
+            <div class="video-stage"><div class="video-placeholder"><span class="film-icon" aria-hidden="true"></span><strong>Highway · Our method</strong><span>Video coming soon</span></div></div>
+            <p class="video-caption">LLM-guided trajectory priors with motion-constrained multi-agent control.</p>
+          </article>
+          <article class="video-card" data-video="highway-maddpg">
+            <div class="video-header"><h3>MADDPG</h3><span>Baseline</span></div>
+            <div class="video-stage"><div class="video-placeholder"><span class="film-icon" aria-hidden="true"></span><strong>Highway · MADDPG</strong><span>Video coming soon</span></div></div>
+            <p class="video-caption">Unconstrained off-policy multi-agent reinforcement learning.</p>
+          </article>
+          <article class="video-card" data-video="highway-macpo">
+            <div class="video-header"><h3>MACPO</h3><span>Baseline</span></div>
+            <div class="video-stage"><div class="video-placeholder"><span class="film-icon" aria-hidden="true"></span><strong>Highway · MACPO</strong><span>Video coming soon</span></div></div>
+            <p class="video-caption">Constrained multi-agent policy optimization.</p>
+          </article>
+          <article class="video-card" data-video="highway-mappo-lag">
+            <div class="video-header"><h3>MAPPO-Lag</h3><span>Baseline</span></div>
+            <div class="video-stage"><div class="video-placeholder"><span class="film-icon" aria-hidden="true"></span><strong>Highway · MAPPO-Lag</strong><span>Video coming soon</span></div></div>
+            <p class="video-caption">On-policy optimization with adaptive Lagrange multipliers.</p>
+          </article>
+          <article class="video-card" data-video="highway-masac-rp">
+            <div class="video-header"><h3>MASAC-RP</h3><span>Baseline</span></div>
+            <div class="video-stage"><div class="video-placeholder"><span class="film-icon" aria-hidden="true"></span><strong>Highway · MASAC-RP</strong><span>Video coming soon</span></div></div>
+            <p class="video-caption">Multi-agent soft actor–critic with fixed constraint penalties.</p>
+          </article>
+        </div>
+        <div class="video-subgroup" id="scenario-videos">
+        <p class="section-lead">Coordinated transportation through roundabouts, intersections, and highway traffic reconstructed from highD trajectories.</p>
+        <div class="video-grid scenario-grid">
+          <article class="video-card" data-video="roundabout">
+            <div class="video-header"><h3>Roundabout</h3><span class="method-tag">Ours</span></div>
+            <div class="video-stage"><div class="video-placeholder"><span class="film-icon" aria-hidden="true"></span><strong>Roundabout</strong><span>Video coming soon</span></div></div>
+            <p class="video-caption">Coordinated turning along a curved route in surrounding traffic.</p>
+          </article>
+          <article class="video-card" data-video="intersection">
+            <div class="video-header"><h3>Intersection</h3><span class="method-tag">Ours</span></div>
+            <div class="video-stage"><div class="video-placeholder"><span class="film-icon" aria-hidden="true"></span><strong>Intersection</strong><span>Video coming soon</span></div></div>
+            <p class="video-caption">Collaborative vehicle control through a road intersection.</p>
+          </article>
+          <article class="video-card" data-video="highd">
+            <div class="video-header"><h3>highD</h3><span class="method-tag">Ours</span></div>
+            <div class="video-stage"><div class="video-placeholder"><span class="film-icon" aria-hidden="true"></span><strong>highD highway</strong><span>Video coming soon</span></div></div>
+            <p class="video-caption">Simulated highway traffic reconstructed from real-world trajectories.</p>
+          </article>
+        </div>
+        <p class="source-note">The highD scenario is reconstructed in highway-env using recorded vehicle trajectories. The paper uses 500 segments of 120 seconds each: 400 for training and 100 for testing. Policies are trained in the respective scenarios.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint" id="results" aria-labelledby="results-heading">
+      <div class="container">
+        <h2 id="results-heading" class="section-title">Experimental results</h2>
+        <p class="section-lead">The proposed method achieves the highest task success rate and concurrent constraint satisfaction in the main benchmark.</p>
+        <div class="table-wrap" role="region" aria-label="Main benchmark results table, scroll horizontally on smaller screens" tabindex="0">
+          <table><caption>Testing performance</caption><thead><tr><th scope="col">Method</th><th scope="col">Success rate ↑<small>%</small></th><th scope="col">Distance violation ↓<small>m</small></th><th scope="col">Velocity violation ↓<small>m/s</small></th><th scope="col">Concurrent satisfaction ↑<small>% of time steps</small></th></tr></thead><tbody>
+            <tr class="ours"><th scope="row">Our method</th><td>90.4 ± 1.2</td><td>0.043 ± 0.016</td><td>0.019 ± 0.004</td><td>97.7 ± 1.5</td></tr>
+            <tr><th scope="row">MADDPG</th><td>42.0 ± 33.4</td><td>1.684 ± 1.609</td><td>0.521 ± 0.051</td><td>1.2 ± 1.0</td></tr>
+            <tr><th scope="row">MACPO</th><td>0.0 ± 0.0</td><td>0.479 ± 0.314</td><td>0.205 ± 0.062</td><td>27.3 ± 15.1</td></tr>
+            <tr><th scope="row">MAPPO-Lag</th><td>42.2 ± 37.0</td><td>0.999 ± 0.779</td><td>0.085 ± 0.027</td><td>7.6 ± 3.4</td></tr>
+            <tr><th scope="row">MASAC-RP</th><td>56.0 ± 6.9</td><td>0.493 ± 0.108</td><td>0.173 ± 0.046</td><td>7.4 ± 3.4</td></tr>
+          </tbody></table>
+        </div>
+        <p class="source-note">Mean ± standard deviation over five independent random seeds, with 100 evaluation episodes per seed. Concurrent satisfaction counts time steps at which both motion constraints are satisfied.</p>
+
+        <div class="scenario-results" role="region" aria-label="Scenario-specific results">
+        <p class="section-lead">The proposed method achieves task success rates of 96.0%, 100.0%, and 86.0% in the roundabout, intersection, and highD-based highway scenarios, respectively.</p>
+
+        <div class="table-wrap" role="region" aria-label="Scenario evaluation results table, scroll horizontally on smaller screens" tabindex="0">
+          <table><caption>Scenario-specific policy evaluation</caption><thead><tr><th scope="col">Scenario</th><th scope="col">Success rate ↑<small>%</small></th><th scope="col">Distance violation ↓<small>m</small></th><th scope="col">Velocity violation ↓<small>m/s</small></th><th scope="col">Concurrent satisfaction ↑<small>% of time steps</small></th></tr></thead><tbody>
+            <tr><th scope="row">Roundabout</th><td>96.0 ± 3.5</td><td>0.043 ± 0.038</td><td>0.045 ± 0.018</td><td>90.7 ± 4.2</td></tr>
+            <tr><th scope="row">Intersection</th><td>100.0 ± 0.0</td><td>0.038 ± 0.034</td><td>0.046 ± 0.050</td><td>91.7 ± 10.7</td></tr>
+            <tr><th scope="row">highD</th><td>86.0 ± 13.1</td><td>0.030 ± 0.030</td><td>0.026 ± 0.024</td><td>95.0 ± 6.4</td></tr>
+          </tbody></table>
+        </div>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+  <footer><div class="container"><p>Hao Pang · Guoqiang Li · Yu Yue</p><p>School of Mechanical Engineering, Beijing Institute of Technology</p><p class="footer-credit">Page design inspired by our <a href="https://bitmobility.github.io/LGDRL/" target="_blank" rel="noopener">LGDRL project page</a>.</p><a href="#top" class="back-top">Back to top ↑</a></div></footer>
+</body>
+</html>
